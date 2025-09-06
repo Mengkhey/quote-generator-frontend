@@ -89,7 +89,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-4 justify-center">
                 <button
                   onClick={getRandomQuote}
-                  className="px-6 py-2 bg-black hover:cursor-pointer text-white rounded-xl shadow hover:bg-blue-700 transition"
+                  className="px-6 py-2 bg-black hover:cursor-pointer text-white rounded-xl shadow hover:bg-black/60 transition"
                 >
                   Random Quote
                 </button>
