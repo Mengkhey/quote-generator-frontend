@@ -50,7 +50,7 @@ export default function Home() {
             Welcome to Quote Generator
           </h1>
           <p className="text-lg md:text-xl text-gray-700 mb-6 text-center md:text-left">
-            Discover inspiring quotes and Cambodian heritage.
+            Discover inspiring quotes for your daily life.
           </p>
 
           {/* Quote Section */}
