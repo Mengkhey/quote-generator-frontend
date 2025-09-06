@@ -1,103 +1,269 @@
-import Image from "next/image";
+// "use client";
+
+// import Image from "next/image";
+// import { useState } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+
+// export default function Home() {
+//   const demoQuotes = [
+//     { text: "The journey of a thousand miles begins with a single step.", author: "Lao Tzu" },
+//     { text: "In the middle of every difficulty lies opportunity.", author: "Albert Einstein" },
+//     { text: "Happiness depends upon ourselves.", author: "Aristotle" },
+//     { text: "Do not wait to strike till the iron is hot; but make it hot by striking.", author: "William Butler Yeats" },
+//   ];
+
+//   const [quote, setQuote] = useState(demoQuotes[0]);
+//   const [key, setKey] = useState(0);
+
+//   const getRandomQuote = () => {
+//     const randomIndex = Math.floor(Math.random() * demoQuotes.length);
+//     setQuote(demoQuotes[randomIndex]);
+//     setKey((prev) => prev + 1);
+//   };
+
+//   return (
+//     <main className="flex flex-col md:flex-row items-center justify-center overflow-hidden h-screen bg-white">
+//       <div>
+//         <img className="p-10 md:w-130" src="/images/accient.jpg" alt="accient_image" />
+//       </div>
+
+//       <section className="flex flex-col max-w-lg">
+//         <article className="p-6">
+//           <h1 className="text-3xl md:text-5xl font-bold mb-4 md:text-left">
+//             Welcome to Quote Generator
+//           </h1>
+//           <p className="text-lg md:text-xl text-gray-700 mb-6 text-center md:text-left">
+//             Discover inspiring quotes and Cambodian heritage.
+//           </p>
+
+//           {/* Quote Section with Neon Glow */}
+//           <div className="relative p-6 rounded-2xl shadow-md text-center overflow-hidden bg-gray-100">
+//             {/* Pulsing Neon Glow Background */}
+//             <motion.div
+//               className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-indigo-500 via-blue-400 to-cyan-400 opacity-40 blur-2xl"
+//               animate={{ opacity: [0.3, 0.55, 0.3] }}
+//               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+//             />
+
+//             {/* Quote + Button */}
+//             <div className="relative z-10">
+//               <AnimatePresence mode="wait">
+//                 <motion.div
+//                   key={key}
+//                   initial={{ opacity: 0, y: 20 }}
+//                   animate={{ opacity: 1, y: 0 }}
+//                   exit={{ opacity: 0, y: -20 }}
+//                   transition={{ duration: 0.6 }}
+//                 >
+//                   <p className="text-xl italic text-gray-800 mb-4">"{quote.text}"</p>
+//                   <p className="text-lg font-semibold text-gray-600 mb-6">— {quote.author}</p>
+//                 </motion.div>
+//               </AnimatePresence>
+
+//               <button
+//                 onClick={getRandomQuote}
+//                 className="px-6 py-2 bg-black text-white rounded-xl shadow hover:bg-blue-700 transition"
+//               >
+//                 Random Quote
+//               </button>
+//             </div>
+//           </div>
+//         </article>
+//       </section>
+//     </main>
+//   );
+// }=============================================
+
+// "use client";
+
+// import { useState } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+// import { fetchRandomQuote } from "../lib/api";
+
+// type Quote = {
+//   text: string;
+//   owner: string;
+// };
+
+// export default function Home() {
+//   const [quote, setQuote] = useState<Quote | null>(null);
+//   const [key, setKey] = useState(0);
+
+//   const getRandomQuote = async () => {
+//     const newQuote = await fetchRandomQuote();
+//     if (newQuote) {
+//       setQuote(newQuote);
+//       setKey((prev) => prev + 1);
+//     }
+//   };
+
+//   return (
+//     <main className="flex flex-col md:flex-row items-center justify-center overflow-hidden h-auto bg-white">
+//       <div>
+//         <img
+//           className="p-10 md:w-120"
+//           src="/images/accient.jpg"
+//           alt="accient_image"
+//         />
+//       </div>
+
+//       <section className="flex flex-col max-w-lg">
+//         <article className="p-6">
+//           <h1 className="text-3xl md:text-5xl font-bold mb-4 md:text-left">
+//             Welcome to Quote Generator
+//           </h1>
+//           <p className="text-lg md:text-xl text-gray-700 mb-6 text-center md:text-left">
+//             Discover inspiring quotes and Cambodian heritage.
+//           </p>
+
+//           {/* Quote Section */}
+//           <div className="relative p-6 rounded-2xl shadow-md text-center overflow-hidden bg-gray-100">
+//             {/* Pulsing Neon Glow Background */}
+//             <motion.div
+//               className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-indigo-500 via-blue-400 to-cyan-400 opacity-40 blur-2xl"
+//               animate={{ opacity: [0.3, 0.55, 0.3] }}
+//               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+//             />
+
+//             {/* Quote + Button */}
+//             <div className="relative z-10">
+//               <AnimatePresence mode="wait">
+//                 {quote && (
+//                   <motion.div
+//                     key={key}
+//                     initial={{ opacity: 0, y: 20 }}
+//                     animate={{ opacity: 1, y: 0 }}
+//                     exit={{ opacity: 0, y: -20 }}
+//                     transition={{ duration: 0.6 }}
+//                   >
+//                     <p className="text-xl italic text-gray-800 mb-4">
+//                       "{quote.text}"
+//                     </p>
+//                     <p className="text-lg font-semibold text-gray-600 mb-6">
+//                       — {quote.owner}
+//                     </p>
+//                   </motion.div>
+//                 )}
+//               </AnimatePresence>
+
+//               <button
+//                 onClick={getRandomQuote}
+//                 className="px-6 py-2 bg-black hover:cursor-pointer text-white rounded-xl shadow hover:bg-blue-700 transition"
+//               >
+//                 Random Quote
+//               </button>
+//             </div>
+//           </div>
+//         </article>
+//       </section>
+//     </main>
+//   );
+// }
+
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { fetchRandomQuote, fetchAIQuote } from "../lib/api";
+
+type Quote = {
+  text: string;
+  owner?: string;
+};
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [quote, setQuote] = useState<Quote | null>(null);
+  const [key, setKey] = useState(0);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  // Random DB Quote
+  const getRandomQuote = async () => {
+    const newQuote = await fetchRandomQuote();
+    if (newQuote) {
+      setQuote(newQuote);
+      setKey((prev) => prev + 1);
+    }
+  };
+
+  // AI-Generated Quote
+  const getAIQuote = async () => {
+    const newQuote = await fetchAIQuote();
+    if (newQuote) {
+      setQuote({ text: newQuote.text, owner: "AI (Gemini)" });
+      setKey((prev) => prev + 1);
+    }
+  };
+
+  return (
+    <main className="flex flex-col md:flex-row items-center justify-center overflow-hidden h-auto bg-white">
+      <div>
+        <img
+          className="p-10 md:w-120"
+          src="/images/accient.jpg"
+          alt="accient_image"
+        />
+      </div>
+
+      <section className="flex flex-col max-w-lg">
+        <article className="p-6">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 md:text-left">
+            Welcome to Quote Generator
+          </h1>
+          <p className="text-lg md:text-xl text-gray-700 mb-6 text-center md:text-left">
+            Discover inspiring quotes and Cambodian heritage.
+          </p>
+
+          {/* Quote Section */}
+          <div className="relative p-6 rounded-2xl shadow-md text-center overflow-hidden bg-gray-100">
+            {/* Pulsing Neon Glow Background */}
+            <motion.div
+              className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-indigo-500 via-blue-400 to-cyan-400 opacity-40 blur-2xl"
+              animate={{ opacity: [0.3, 0.55, 0.3] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+            {/* Quote + Buttons */}
+            <div className="relative z-10">
+              <AnimatePresence mode="wait">
+                {quote && (
+                  <motion.div
+                    key={key}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <p className="text-xl italic text-gray-800 mb-4">
+                      "{quote.text}"
+                    </p>
+                    {quote.owner && (
+                      <p className="text-lg font-semibold text-gray-600 mb-6">
+                        — {quote.owner}
+                      </p>
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Two Buttons */}
+              <div className="flex flex-wrap gap-4 justify-center">
+                <button
+                  onClick={getRandomQuote}
+                  className="px-6 py-2 bg-black hover:cursor-pointer text-white rounded-xl shadow hover:bg-blue-700 transition"
+                >
+                  Random Quote
+                </button>
+
+                <button
+                  onClick={getAIQuote}
+                  className="px-6 py-2 bg-green-600 hover:cursor-pointer text-white rounded-xl shadow hover:bg-green-700 transition"
+                >
+                  AI Quote
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
   );
 }
