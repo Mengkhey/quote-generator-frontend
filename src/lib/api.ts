@@ -1,6 +1,8 @@
+const BASE_URL = "https://quote-generator-backend-kt9l.onrender.com"; 
+
 export async function fetchRandomQuote() {
   try {
-    const res = await fetch("http://localhost:4000/api/quotes/random", {
+    const res = await fetch(`${BASE_URL}/api/quotes/random`, {
       cache: "no-store", // always fresh
     });
     if (!res.ok) throw new Error("Failed to fetch quote");
@@ -13,7 +15,7 @@ export async function fetchRandomQuote() {
 
 export async function fetchAIQuote() {
   try {
-    const res = await fetch("http://localhost:4000/api/ai-quote");
+    const res = await fetch(`${BASE_URL}/api/ai-quote`);
     if (!res.ok) throw new Error("Failed to fetch AI quote");
     return await res.json();
   } catch (error) {
