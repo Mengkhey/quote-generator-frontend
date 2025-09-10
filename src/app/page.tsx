@@ -55,14 +55,14 @@ export default function Home() {
 
           {/* Quote Section */}
           <div className="relative p-6 rounded-2xl shadow-md text-center overflow-hidden bg-gray-100">
-            {/* Pulsing Neon Glow Background */}
+            {/* make  Neon Glow Background */}
             <motion.div
               className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-indigo-500 via-blue-400 to-cyan-400 opacity-40 blur-2xl"
               animate={{ opacity: [0.3, 0.55, 0.3] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
             />
 
-            {/* Quote + Buttons */}
+            {/*Quote part*/}
             <div className="relative z-10">
               <AnimatePresence mode="wait">
                 {quote && (

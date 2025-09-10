@@ -3,7 +3,7 @@ const BASE_URL = "https://quote-generator-backend-kt9l.onrender.com";
 export async function fetchRandomQuote() {
   try {
     const res = await fetch(`${BASE_URL}/api/quotes/random`, {
-      cache: "no-store", // always fresh
+      cache: "no-store", 
     });
     if (!res.ok) throw new Error("Failed to fetch quote");
     return res.json();
